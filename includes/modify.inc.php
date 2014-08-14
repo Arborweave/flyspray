@@ -1752,11 +1752,11 @@ switch ($action = Req::val('action'))
                    array(Get::val('subtaskid')));
 
         //write event log
-        Flyspray::logEvent(Get::val('task_id'), 33, Get::val('subtaskid'));
+        Flyspray::logEvent(Get::val('taskid'), 33, Get::val('subtaskid'));
         //post success message to the user
         $_SESSION['SUCCESS'] = L('subtaskremovedmsg');
         //redirect the user back to the right task
-        Flyspray::Redirect(CreateURL('details', Get::val('task_id')));
+        Flyspray::Redirect(CreateURL('details', Get::val('taskid')));
         break;
 
     // ##################
@@ -1789,7 +1789,7 @@ switch ($action = Req::val('action'))
         }
 
         //redirect the user back to the right task
-        Flyspray::Redirect(CreateURL('details', Get::val('task_id')));
+        Flyspray::Redirect(CreateURL('details', Get::val('taskid')));
         break;
 
     // ##################
@@ -1944,7 +1944,7 @@ switch ($action = Req::val('action'))
         }
 
         // Log the event in the task history
-         Flyspray::logEvent(Get::val('task_id'), 34, Get::val('subtaskid'));
+         Flyspray::logEvent(Get::val('taskid'), 34, Get::val('subtaskid'));
 
         //finally looks like all the checks are valid so update the supertask_id for the current task
         $db->Query('UPDATE  {tasks}
